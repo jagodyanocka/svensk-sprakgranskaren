@@ -6,7 +6,7 @@ theme = gr.themes.Soft.from_hub("hmb/amethyst")
 
 with gr.Blocks(theme=theme) as tutor:
     with gr.Row():
-        gr.Markdown("# Språkranskaren")
+        gr.Markdown("# Språkgranskaren")
 
     with gr.Row():
 
