@@ -52,6 +52,6 @@ with gr.Blocks(
     )
 
 
-tutor.launch(run_history=False)
+tutor.launch(footer_links=[])
 
 
