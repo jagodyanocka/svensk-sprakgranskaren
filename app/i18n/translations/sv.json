@@ -1,0 +1,8 @@
+{
+  "input_label": "Skriv din svenska",
+  "output_label": "Korrigerat svenskt",
+  "correct_button": "Korrekt mig!",
+  "clear_button": "Rensa",
+  "input_placeholder": "Hej, ska det regna idag? Jag hoppas inte det, eftersom jag vill gå en promenad i parken.",
+  "output_placeholder": "...AI-svaret kommer att visas här"
+}

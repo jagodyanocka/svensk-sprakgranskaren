@@ -1,0 +1,8 @@
+{
+  "input_label": "Check your english sentence",
+  "output_label": "Corrected sentence",
+  "correct_button": "Correct me!",
+  "clear_button": "Clear",
+  "input_placeholder": "Hello, Is it going to rain today? I hope not, because I want to go for a walk in the park.",
+  "output_placeholder": "AI output will appear here"
+}

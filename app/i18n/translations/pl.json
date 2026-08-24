@@ -1,0 +1,9 @@
+
+{
+  "input_label": "Sprawdź swoje zdanie po polsku",
+  "output_label": "Poprawione zdanie",
+  "correct_button": "Popraw mnie",
+  "clear_button": "Wyczyść",
+  "input_placeholder": "Hej, czy będzie dzisiaj padać? Mam nadzieję, że nie, ponieważ chcę pójść na spacer do parku.",
+  "output_placeholder": "...Odpowiedź AI pojawi się tutaj"
+}
