@@ -112,4 +112,4 @@ with gr.Blocks(theme=theme) as tutor:
     )
 
 
-tutor.launch(footer_links=[])
+tutor.launch(footer_links=[], share=True)
