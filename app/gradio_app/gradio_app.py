@@ -45,6 +45,12 @@ with gr.Blocks(
         outputs=out
     )
 
+    clear_btn.click(
+        lambda: ["", ""],
+        inputs=[],
+        outputs=[user_input, out]
+    )
+
 
 tutor.launch(run_history=False)
 
