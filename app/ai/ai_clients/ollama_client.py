@@ -1,23 +1,21 @@
-from openai import OpenAI
-from openai.types.chat import ChatCompletionSystemMessageParam, ChatCompletionUserMessageParam, \
-    ChatCompletionMessageParam, ChatCompletionChunk
-
-OLLAMA_BASE_URL = "http://localhost:11434/v1"
+from collections.abc import Iterator
 from pathlib import Path
 
-OLLAMA_MODEL = "gpt-oss:20b-cloud"
-PROMPT_PATH = Path(__file__).parent.parent / "prompts" / "tutor.md"
-SYSTEM_PROMPT = PROMPT_PATH.read_text()
-
-ollama_client = OpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
-
-from collections.abc import Iterator
-
+from openai import OpenAI
 from openai.types.chat import (
     ChatCompletionMessageParam,
     ChatCompletionSystemMessageParam,
     ChatCompletionUserMessageParam,
 )
+
+from app.db import save_interaction
+
+OLLAMA_BASE_URL = "http://localhost:11434/v1"
+OLLAMA_MODEL = "gpt-oss:20b-cloud"
+PROMPT_PATH = Path(__file__).parent.parent / "prompts" / "tutor.md"
+SYSTEM_PROMPT = PROMPT_PATH.read_text()
+
+ollama_client = OpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
 
 
 def react_to_user_poor_swedish(
@@ -69,4 +67,11 @@ def react_to_user_poor_swedish(
 
     if not response:
         yield "Sorry, I couldn't generate a response. Please try again."
+        return
+
+    save_interaction(
+        language=language,
+        input_text=message,
+        output_text=response,
+    )
 

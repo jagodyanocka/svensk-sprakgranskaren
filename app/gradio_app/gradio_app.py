@@ -1,6 +1,7 @@
 import gradio as gr
 
 from app.ai.ai_clients.ollama_client import react_to_user_poor_swedish
+from app.db import init_db
 from app.i18n.service.translate_service import Language, Translator
 
 
@@ -112,4 +113,5 @@ with gr.Blocks(theme=theme) as tutor:
     )
 
 
+init_db()
 tutor.launch(footer_links=[], share=True)
