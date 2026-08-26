@@ -1,0 +1,14 @@
+.venv
+.git
+.gradio
+.idea
+.cursor
+__pycache__
+*.pyc
+.env
+.env.*
+!.env.example
+*.egg-info
+dist
+build
+uv.lock.bak

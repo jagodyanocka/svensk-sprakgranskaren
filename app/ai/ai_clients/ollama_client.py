@@ -1,3 +1,4 @@
+import os
 from collections.abc import Iterator
 from pathlib import Path
 
@@ -10,12 +11,18 @@ from openai.types.chat import (
 
 from app.db import save_interaction
 
-OLLAMA_BASE_URL = "http://localhost:11434/v1"
-OLLAMA_MODEL = "gpt-oss:20b-cloud"
+LLM_BASE_URL = os.environ.get("LLM_URL")
+LLM_MODEL = os.environ.get("LLM_MODEL")
+LLM_API_KEY = os.environ.get("LLM_API_KEY", "ollama")
 PROMPT_PATH = Path(__file__).parent.parent / "prompts" / "tutor.md"
 SYSTEM_PROMPT = PROMPT_PATH.read_text()
 
-ollama_client = OpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
+if not LLM_BASE_URL or not LLM_MODEL:
+    raise RuntimeError(
+        "LLM_URL and LLM_MODEL must be set"
+    )
+
+ollama_client = OpenAI(base_url=LLM_BASE_URL, api_key=LLM_API_KEY)
 
 
 def react_to_user_poor_swedish(
@@ -45,7 +52,7 @@ def react_to_user_poor_swedish(
     ]
 
     stream = ollama_client.chat.completions.create(
-        model=OLLAMA_MODEL,
+        model=LLM_MODEL,
         messages=messages,
         stream=True,
         max_tokens=200,

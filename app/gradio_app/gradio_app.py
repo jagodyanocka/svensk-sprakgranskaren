@@ -1,7 +1,6 @@
 import gradio as gr
 
 from app.ai.ai_clients.ollama_client import react_to_user_poor_swedish
-from app.db import init_db
 from app.i18n.service.translate_service import Language, Translator
 
 
@@ -43,7 +42,7 @@ theme = gr.themes.Soft.from_hub("hmb/amethyst").set(
 default_language = Language.Swedish.value
 initial = get_translations(default_language)
 
-with gr.Blocks(theme=theme) as tutor:
+with gr.Blocks() as tutor:
     gr.HTML(
         "<h2 style='text-align:center; font-size:2.2rem;'>"
         "Språkgranskaren"
@@ -111,7 +110,3 @@ with gr.Blocks(theme=theme) as tutor:
         inputs=[],
         outputs=[user_input, out],
     )
-
-
-init_db()
-tutor.launch(footer_links=[], share=True)
